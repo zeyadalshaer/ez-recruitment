@@ -1,0 +1,195 @@
+---
+import { getLocale, localizePath } from '../lib/i18n';
+import { getLocalized, entrySlug } from '../lib/site';
+import { T } from '../lib/site';
+const locale = getLocale(Astro.url.pathname);
+const L = (p: string) => localizePath(p, locale);
+const t = T(locale);
+const u = t.ui.labels;
+const c = t.contact;
+const pages = t.pages;
+const site = t.site;
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import { byOrder } from '../lib/site';
+
+const p = pages.contact;
+const industries = (await getLocalized('industries', locale)).sort(byOrder);
+---
+<Layout title={p.title} description={p.description}>
+  <PageHero eyebrow={c.eyebrow} title={c.heading} intro={c.intro} crumb={[{ label: p.title }]} />
+
+  <section class="section">
+    <div class="container contact-grid">
+      <aside class="contact-side" data-reveal>
+        <h2>Direct contact</h2>
+        <p>Prefer email? Write to us directly.</p>
+        <p><a class="contact-email" href={`mailto:${site.email}`}>{site.email}</a></p>
+        {site.phone && <p>Phone: <a href={`tel:${site.phone.replace(/\s/g, '')}`}>{site.phone}</a></p>}
+        {site.address && <p>{site.address}</p>}
+
+        <h2 class="contact-side__next">{c.nextStepsHeading}</h2>
+        <ol class="steps">
+          {c.nextSteps.map((s) => <li>{s}</li>)}
+        </ol>
+      </aside>
+
+      <div class="form-panel" id="enquiry" data-reveal>
+        <h2>{c.formHeading}</h2>
+        <form action="/api/contact" method="post" class="form" novalidate data-contact-form>
+          <div class="field">
+            <label for="inquiryType">{u.contactingAs} <span aria-hidden="true">*</span></label>
+            <select id="inquiryType" name="inquiryType" required data-type-select>
+              <option value="employer">{u.typeEmployer}</option>
+              <option value="agency">{u.typeAgency}</option>
+              <option value="other">{u.typeOther}</option>
+            </select>
+          </div>
+          <div class="form__row">
+            <div class="field">
+              <label for="name">{u.name} <span aria-hidden="true">*</span></label>
+              <input id="name" name="name" type="text" autocomplete="name" required maxlength="120" />
+            </div>
+            <div class="field">
+              <label for="company">{u.company} <span aria-hidden="true">*</span></label>
+              <input id="company" name="company" type="text" autocomplete="organization" required maxlength="160" />
+            </div>
+          </div>
+          <div class="form__row">
+            <div class="field">
+              <label for="email">{u.email} <span aria-hidden="true">*</span></label>
+              <input id="email" name="email" type="email" autocomplete="email" required maxlength="160" />
+            </div>
+            <div class="field">
+              <label for="phone">{u.phone}</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="40" />
+            </div>
+          </div>
+
+          <div data-for="employer agency">
+            <div class="field">
+              <label for="country">{u.country}</label>
+              <input id="country" name="country" type="text" autocomplete="country-name" maxlength="80" />
+            </div>
+          </div>
+
+          <div data-for="employer">
+            <div class="field">
+              <label for="industry">{u.industry} <span aria-hidden="true">*</span></label>
+              <select id="industry" name="industry" required>
+                <option value="">{u.selectIndustry}</option>
+                {industries.map((i) => <option value={i.data.title}>{i.data.title}</option>)}
+                <option value="Other">{u.other}</option>
+              </select>
+            </div>
+            <div class="form__row">
+              <div class="field"><label for="jobCategories">{u.jobCategories}</label><input id="jobCategories" name="jobCategories" type="text" maxlength="200" placeholder={u.jobCategoriesPh} /></div>
+              <div class="field"><label for="workersNeeded">{u.workers}</label><input id="workersNeeded" name="workersNeeded" type="text" maxlength="60" /></div>
+            </div>
+            <div class="field"><label for="timeline">{u.timeline}</label><input id="timeline" name="timeline" type="text" maxlength="120" /></div>
+            <div class="field">
+              <label for="requirements">{u.requirements} <span aria-hidden="true">*</span></label>
+              <textarea id="requirements" name="requirements" rows="4" required maxlength="3000" placeholder={c.workforcePlaceholder}></textarea>
+            </div>
+          </div>
+
+          <div data-for="agency" hidden>
+            <div class="form__row">
+              <div class="field"><label for="position">{u.position}</label><input id="position" name="position" type="text" maxlength="120" /></div>
+              <div class="field"><label for="companyWebsite">{u.website}</label><input id="companyWebsite" name="companyWebsite" type="url" maxlength="200" placeholder="https://" /></div>
+            </div>
+            <div class="field"><label for="services">{u.services}</label><input id="services" name="services" type="text" maxlength="200" /></div>
+            <div class="field"><label for="cooperation">{u.cooperation}</label><input id="cooperation" name="cooperation" type="text" maxlength="200" /></div>
+          </div>
+
+          <div class="field">
+            <label for="message">{u.message} <span data-for="agency other" aria-hidden="true">*</span></label>
+            <textarea id="message" name="message" rows="4" maxlength="4000" placeholder={c.messagePlaceholder}></textarea>
+          </div>
+
+          <!-- Spam trap: real visitors never see or fill this in. -->
+          <div class="hp" aria-hidden="true">
+            <label for="website">{u.hp}</label>
+            <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <label class="check check--consent"><input type="checkbox" name="consent" value="yes" required /> <span>{u.consent} <a href={L('/privacy-policy/')}>{u.privacyPolicy}</a>. <span aria-hidden="true">*</span></span></label>
+          <p class="form__privacy">{c.audienceNote}</p>
+
+          <button class="btn btn--primary btn--lg" type="submit" data-submit>{c.submitLabel}<span class="btn__arrow" aria-hidden="true">→</span></button>
+
+          <div class="form__status" role="status" aria-live="polite" data-status tabindex="-1"></div>
+        </form>
+
+        <div class="form-success" data-success hidden>
+          <h3>{c.successHeading}</h3>
+          <p>{c.successText}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script define:vars={{ errorText: c.errorText, email: site.email, formInvalid: t.ui.formInvalid, sendingText: t.ui.sending }}>
+  const form = document.querySelector('[data-contact-form]');
+  const status = document.querySelector('[data-status]');
+  const success = document.querySelector('[data-success]');
+  const submit = document.querySelector('[data-submit]');
+
+  const say = (msg, kind) => {
+    status.className = 'form__status' + (kind ? ' is-' + kind : '');
+    status.textContent = msg;
+  };
+
+  // Show only the fields that belong to the chosen inquiry type.
+  const typeSelect = document.querySelector('[data-type-select]');
+  const message = document.getElementById('message');
+  const applyType = () => {
+    const t = typeSelect.value;
+    form.querySelectorAll('[data-for]').forEach((box) => {
+      const on = box.dataset.for.split(' ').includes(t);
+      if (box.tagName === 'SPAN') { box.hidden = !on; return; }
+      box.hidden = !on;
+      box.querySelectorAll('input, select, textarea').forEach((el) => { el.disabled = !on; });
+    });
+    message.required = t !== 'employer';
+  };
+  typeSelect?.addEventListener('change', applyType);
+  if (typeSelect) applyType();
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    say('');
+    form.querySelectorAll('[aria-invalid]').forEach((el) => el.removeAttribute('aria-invalid'));
+
+    const bad = [...form.querySelectorAll('[required]:not(:disabled)')].filter((el) =>
+      el.type === 'checkbox' ? !el.checked : !el.value.trim() || (el.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim())));
+    if (bad.length) {
+      bad.forEach((el) => el.setAttribute('aria-invalid', 'true'));
+      bad[0].focus();
+      say(formInvalid, 'error');
+      return;
+    }
+
+    submit.disabled = true;
+    const label = submit.firstChild.textContent;
+    submit.firstChild.textContent = sendingText;
+    try {
+      const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && data.ok) {
+        form.hidden = true;
+        success.hidden = false;
+        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+      throw new Error(data.error || 'failed');
+    } catch (err) {
+      say(errorText + ' ' + email, 'error');
+      status.focus();
+    } finally {
+      submit.disabled = false;
+      submit.firstChild.textContent = label;
+    }
+  });
+</script>

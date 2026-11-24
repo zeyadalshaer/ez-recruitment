@@ -1,0 +1,30 @@
+---
+import { getLocale, localizePath } from '../lib/i18n';
+import { T } from '../lib/site';
+const locale = getLocale(Astro.url.pathname);
+const L = (p: string) => localizePath(p, locale);
+const t = T(locale);
+const pages = t.pages;
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import BlogIndex from '../components/BlogIndex.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { getCategories } from '../lib/site';
+
+const { cat } = Astro.props;
+const p = pages.insights;
+---
+<Layout title={`${cat.title} | ${p.title}`} description={cat.description ?? p.description}>
+  <PageHero
+    eyebrow="Insights"
+    title={cat.title}
+    intro={cat.description}
+    crumb={[{ label: p.title, href: '/insights/' }, { label: cat.title }]}
+  />
+  <section class="section section--tight">
+    <div class="container">
+      <BlogIndex category={cat.id} showFeatured={false} />
+    </div>
+  </section>
+  <CtaBand />
+</Layout>

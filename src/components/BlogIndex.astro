@@ -1,32 +1,38 @@
 ---
+import { getLocale, localizePath } from '../lib/i18n';
+import { T } from '../lib/site';
+const locale = getLocale(Astro.url.pathname);
+const L = (p: string) => localizePath(p, locale);
+const t = T(locale);
+const pages = t.pages;
 import PostCard from './PostCard.astro';
-import { getCategories, getPosts, pages } from '../lib/site';
+import { getCategories, getPosts } from '../lib/site';
 
 interface Props { category?: string; showFeatured?: boolean }
 const { category, showFeatured = true } = Astro.props;
 
-const [all, cats] = await Promise.all([getPosts(), getCategories()]);
+const [all, cats] = await Promise.all([getPosts(locale), getCategories(locale)]);
 const posts = category ? all.filter((p) => p.data.category === category) : all;
 const featured = showFeatured ? (posts.find((p) => p.data.featured) ?? posts[0]) : undefined;
 const rest = featured ? posts.filter((p) => p.id !== featured.id) : posts;
 ---
 <div class="blog-tools">
-  <div class="chips chips--filter" role="navigation" aria-label="Article categories">
-    <a href="/insights/" aria-current={!category ? 'page' : undefined}>All <span>{all.length}</span></a>
+  <div class="chips chips--filter" role="navigation" aria-label={t.ui.articleCategories}>
+    <a href={L('/insights/')} aria-current={!category ? 'page' : undefined}>{t.ui.all} <span>{all.length}</span></a>
     {cats.map((c) => (
-      <a href={`/insights/category/${c.id}/`} aria-current={category === c.id ? 'page' : undefined}>{c.title} <span>{c.count}</span></a>
+      <a href={L(`/insights/category/${c.id}/`)} aria-current={category === c.id ? 'page' : undefined}>{c.title} <span>{c.count}</span></a>
     ))}
   </div>
   <form class="search" role="search" onsubmit="return false">
-    <label for="post-search" class="sr-only">Search articles</label>
-    <input id="post-search" type="search" placeholder="Search articles" autocomplete="off" data-search-input />
+    <label for="post-search" class="sr-only">{t.ui.searchArticles}</label>
+    <input id="post-search" type="search" placeholder={t.ui.searchArticles} autocomplete="off" data-search-input />
   </form>
 </div>
 
-<p class="blog-count" role="status" aria-live="polite" data-count></p>
+<p class="blog-count" role="status" aria-live="polite" data-count data-tpl={t.ui.articlesFound}></p>
 
 {posts.length === 0 ? (
-  <p class="empty">No articles have been published in this category yet.</p>
+  <p class="empty">{t.ui.noArticles}</p>
 ) : (
   <>
     {featured && <PostCard post={featured} featured />}
@@ -53,7 +59,7 @@ const rest = featured ? posts.filter((p) => p.id !== featured.id) : posts;
       if (match) shown++;
     });
     if (empty) empty.hidden = shown !== 0 || cards.length === 0;
-    if (count) count.textContent = terms.length ? `${shown} article${shown === 1 ? '' : 's'} found` : '';
+    if (count) count.textContent = terms.length ? (count.dataset.tpl ?? '').replace('{n}', String(shown)) : '';
   }
 
   const q = new URLSearchParams(location.search).get('q');

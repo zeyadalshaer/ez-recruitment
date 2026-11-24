@@ -1,0 +1,56 @@
+---
+import { getLocale, localizePath } from '../lib/i18n';
+import { getLocalized, entrySlug } from '../lib/site';
+import { T } from '../lib/site';
+const locale = getLocale(Astro.url.pathname);
+const L = (p: string) => localizePath(p, locale);
+const t = T(locale);
+const pages = t.pages;
+import { render } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Img from '../components/Img.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { byOrder } from '../lib/site';
+
+const p = pages.industries;
+const industries = (await getLocalized('industries', locale)).sort(byOrder);
+const rendered = await Promise.all(industries.map(async (s) => ({ s, Content: (await render(s)).Content })));
+---
+<Layout title={p.title} description={p.description} image={p.image}>
+  <PageHero eyebrow={p.eyebrow} title={p.title} intro={p.intro} image={p.image} imageAlt={p.imageAlt} crumb={[{ label: p.title }]} />
+
+  <div class="industry-bands">
+    {rendered.map(({ s, Content }, i) => (
+      <section class:list={['industry-band', { 'industry-band--flip': i % 2 === 1 }]} id={entrySlug(s)}>
+        <div class="industry-band__media">
+          <Img src={s.data.image} alt={s.data.imageAlt ?? ''} sizes="(min-width: 960px) 50vw, 100vw" />
+        </div>
+        <div class="industry-band__panel">
+          <div class="industry-band__copy" data-reveal>
+            <p class="eyebrow eyebrow--light">Industry {String(i + 1).padStart(2, '0')}</p>
+            <h2>{s.data.title}</h2>
+            <p class="industry-band__summary">{s.data.summary}</p>
+            <div class="prose prose--light prose--tight"><Content /></div>
+            {s.data.roles.length > 0 && (
+              <>
+                <h3>{t.ui.exampleRoles}</h3>
+                <ul class="chips">{s.data.roles.map((r) => <li>{r}</li>)}</ul>
+              </>
+            )}
+          </div>
+        </div>
+      </section>
+    ))}
+  </div>
+
+  <section class="section section--mist">
+    <div class="container note" data-reveal>
+      <h2>{t.ui.sectorNotListed}</h2>
+      <p>{t.ui.sectorNotListedText}</p>
+      <a class="link-arrow" href={L('/contact/')}>{t.ui.contactUs} <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <CtaBand />
+</Layout>

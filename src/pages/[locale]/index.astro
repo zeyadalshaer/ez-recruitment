@@ -1,0 +1,6 @@
+---
+import V from '../../views/Home.astro';
+import { builtLocales } from '../../lib/i18n';
+export const getStaticPaths = () => builtLocales.map((locale) => ({ params: { locale } }));
+---
+<V />

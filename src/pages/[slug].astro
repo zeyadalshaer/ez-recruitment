@@ -1,24 +1,11 @@
 ---
-// Any page created in the CMS under "Pages" is published here, at /<slug>/.
-import { getCollection, render } from 'astro:content';
-import Layout from '../layouts/Layout.astro';
-import PageHero from '../components/PageHero.astro';
-import { formatDate } from '../lib/site';
-
+// Any page created under "Pages" is published at /<slug>/.
+import V from '../views/Page.astro';
+import { getLocalized, entrySlug } from '../lib/site';
 export async function getStaticPaths() {
-  const pages = await getCollection('pages');
-  return pages.map((page) => ({ params: { slug: page.id }, props: { page } }));
+  const pages = await getLocalized('pages');
+  return pages.map((page) => ({ params: { slug: entrySlug(page) }, props: { page } }));
 }
-
 const { page } = Astro.props;
-const { Content } = await render(page);
 ---
-<Layout title={page.data.title} description={page.data.description}>
-  <PageHero title={page.data.title} crumb={[{ label: page.data.title }]} />
-  <section class="section">
-    <div class="container container--narrow">
-      {page.data.updated && <p class="page-updated">Last updated: {formatDate(page.data.updated)}</p>}
-      <div class="prose"><Content /></div>
-    </div>
-  </section>
-</Layout>
+<V page={page} />

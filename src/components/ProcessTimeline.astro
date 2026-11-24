@@ -1,10 +1,16 @@
 ---
-import { getCollection } from 'astro:content';
+import { getLocale, localizePath } from '../lib/i18n';
+import { getLocalized, entrySlug } from '../lib/site';
+import { T } from '../lib/site';
+const locale = getLocale(Astro.url.pathname);
+const L = (p: string) => localizePath(p, locale);
+const t = T(locale);
+
 import { byOrder } from '../lib/site';
 
 interface Props { variant?: 'compact' | 'detailed' }
 const { variant = 'compact' } = Astro.props;
-const steps = (await getCollection('process')).sort(byOrder);
+const steps = (await getLocalized('process', locale)).sort(byOrder);
 ---
 <ol class:list={['timeline', `timeline--${variant}`]}>
   {steps.map((s, i) => (

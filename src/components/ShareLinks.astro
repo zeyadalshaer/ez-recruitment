@@ -1,6 +1,9 @@
 ---
 interface Props { url: string; title: string }
 const { url, title } = Astro.props;
+import { getLocale } from '../lib/i18n';
+import { T } from '../lib/site';
+const ui = T(getLocale(Astro.url.pathname)).ui;
 const u = encodeURIComponent(url);
 const t = encodeURIComponent(title);
 const links = [
@@ -11,13 +14,13 @@ const links = [
   { label: 'Email', href: `mailto:?subject=${t}&body=${u}` },
 ];
 ---
-<div class="share" data-share-url={url}>
-  <span class="share__label">Share this article</span>
+<div class="share" data-share-url={url} data-copied={ui.linkCopied} data-failed={ui.copyFailed}>
+  <span class="share__label">{ui.shareArticle}</span>
   <ul>
     {links.map((l) => (
-      <li><a href={l.href} target={l.label === 'Email' ? undefined : '_blank'} rel="noopener noreferrer" aria-label={`Share on ${l.label}`}>{l.label}</a></li>
+      <li><a href={l.href} target={l.label === 'Email' ? undefined : '_blank'} rel="noopener noreferrer" aria-label={`${ui.shareOn} ${l.label}`}>{l.label}</a></li>
     ))}
-    <li><button type="button" data-copy-link>Copy link</button></li>
+    <li><button type="button" data-copy-link>{ui.copyLink}</button></li>
   </ul>
   <span class="share__status" role="status" aria-live="polite" data-copy-status></span>
 </div>
@@ -29,9 +32,9 @@ const links = [
     btn?.addEventListener('click', async () => {
       try {
         await navigator.clipboard.writeText(box.dataset.shareUrl ?? location.href);
-        if (status) status.textContent = 'Link copied';
+        if (status) status.textContent = box.dataset.copied ?? '';
       } catch {
-        if (status) status.textContent = 'Copy failed. Please copy the address from your browser.';
+        if (status) status.textContent = box.dataset.failed ?? '';
       }
       setTimeout(() => { if (status) status.textContent = ''; }, 3000);
     });

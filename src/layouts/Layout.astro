@@ -7,8 +7,10 @@ import { getImage } from 'astro:assets';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { resolveImage } from '../lib/images';
-import { site } from '../lib/site';
-import { getLocale, stripLocale, localizePath, localeMeta, publishedLocales, defaultLocale } from '../lib/i18n';
+import { T } from '../lib/site';
+import { getLocale, stripLocale, localizePath, localeMeta, publishedLocales, defaultLocale, isReviewLocale } from '../lib/i18n';
+
+const site = T(getLocale(Astro.url.pathname)).site;
 
 interface Props {
   title?: string;
@@ -28,13 +30,15 @@ const {
   type = 'website',
   publishedTime,
   modifiedTime,
-  noindex = false,
+  noindex: noindexProp = false,
   jsonLd = [],
 } = Astro.props;
 
 const fullTitle = title ? `${title} | ${site.name}` : site.defaultTitle;
 const locale = getLocale(Astro.url.pathname);
 const lm = localeMeta[locale];
+// Languages still waiting for human review are reachable but hidden from search engines.
+const noindex = noindexProp || isReviewLocale(locale);
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const basePath = stripLocale(Astro.url.pathname);
 const alternates = publishedLocales.map((l) => ({

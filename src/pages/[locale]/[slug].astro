@@ -1,0 +1,14 @@
+---
+import V from '../../views/Page.astro';
+import { getLocalized, entrySlug } from '../../lib/site';
+import { builtLocales } from '../../lib/i18n';
+export async function getStaticPaths() {
+  const out = [];
+  for (const locale of builtLocales) {
+    for (const page of await getLocalized('pages', locale)) out.push({ params: { locale, slug: entrySlug(page) }, props: { page } });
+  }
+  return out;
+}
+const { page } = Astro.props;
+---
+<V page={page} />

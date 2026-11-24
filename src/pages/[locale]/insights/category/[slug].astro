@@ -1,0 +1,14 @@
+---
+import V from '../../../../views/Category.astro';
+import { getCategories } from '../../../../lib/site';
+import { builtLocales } from '../../../../lib/i18n';
+export async function getStaticPaths() {
+  const out = [];
+  for (const locale of builtLocales) {
+    for (const cat of await getCategories(locale)) out.push({ params: { locale, slug: cat.id }, props: { cat } });
+  }
+  return out;
+}
+const { cat } = Astro.props;
+---
+<V cat={cat} />

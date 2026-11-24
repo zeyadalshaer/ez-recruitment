@@ -1,0 +1,55 @@
+---
+import { getLocale, localizePath } from '../lib/i18n';
+import { T } from '../lib/site';
+const locale = getLocale(Astro.url.pathname);
+const L = (p: string) => localizePath(p, locale);
+const t = T(locale);
+const partner = t.partner;
+const home = t.home;
+const pages = t.pages;
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import ProcessTimeline from '../components/ProcessTimeline.astro';
+import CtaBand from '../components/CtaBand.astro';
+import SectionHead from '../components/SectionHead.astro';
+
+
+const p = pages.process;
+---
+<Layout title={p.title} description={p.description} image={p.image}>
+  <PageHero eyebrow={p.eyebrow} title={p.title} intro={p.intro} image={p.image} imageAlt={p.imageAlt} crumb={[{ label: p.title }]} />
+
+  <section class="section">
+    <div class="container container--narrow">
+      <ProcessTimeline variant="detailed" />
+      <p class="timeline-note" data-reveal>
+        Every search is different. Timelines depend on the roles, the requirements and the administrative steps involved, and we will discuss realistic expectations with you at the planning stage.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--mist">
+    <div class="container container--narrow">
+      <SectionHead eyebrow={t.ui.rolesHeading} heading={t.ui.whoDoesWhat} intro={t.ui.whoDoesWhatIntro} />
+      <dl class="resp" data-reveal>
+        {partner.responsibilities.rows.map((r) => (<div class="resp__row"><dt>{r.who}</dt><dd>{r.does}</dd></div>))}
+      </dl>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHead eyebrow={home.support.eyebrow} heading={t.ui.supportAfter} intro={t.ui.supportAfterIntro} />
+      <div class="support__grid">
+        {home.support.items.map((it, i) => (
+          <article class:list={['support-card', { 'support-card--lead': i === 0 }]} data-reveal style={`--i:${i}`}>
+            <span class="support-card__tag">{it.tag}</span><h3>{it.title}</h3><p>{it.text}</p>
+          </article>
+        ))}
+      </div>
+      <p class="support__note">{home.support.note}</p>
+    </div>
+  </section>
+
+  <CtaBand />
+</Layout>

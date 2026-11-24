@@ -1,0 +1,14 @@
+---
+import V from '../../../views/Article.astro';
+import { getPosts, entrySlug } from '../../../lib/site';
+import { builtLocales } from '../../../lib/i18n';
+export async function getStaticPaths() {
+  const out = [];
+  for (const locale of builtLocales) {
+    for (const post of await getPosts(locale)) out.push({ params: { locale, slug: entrySlug(post) }, props: { post } });
+  }
+  return out;
+}
+const { post } = Astro.props;
+---
+<V post={post} />

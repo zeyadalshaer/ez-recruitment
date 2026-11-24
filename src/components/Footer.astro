@@ -1,13 +1,20 @@
 ---
+import { getLocale, localizePath } from '../lib/i18n';
+import { T } from '../lib/site';
+const locale = getLocale(Astro.url.pathname);
+const L = (p: string) => localizePath(p, locale);
+const t = T(locale);
+const site = t.site;
+const nav = t.nav;
 import Logo from './Logo.astro';
-import { site, nav } from '../lib/site';
+
 const year = new Date().getFullYear();
 const social = (site.social ?? []) as { label: string; url: string }[];
 ---
 <footer class="site-footer">
   <div class="container footer__grid">
     <div class="footer__brand">
-      <a href="/" aria-label="EZ Recruitment, home"><Logo light /></a>
+      <a href={L('/')} aria-label={t.ui.homeAria}><Logo light /></a>
       <p>{site.footerBlurb}</p>
       <p class="footer__tagline">{site.tagline}</p>
     </div>
@@ -15,12 +22,12 @@ const social = (site.social ?? []) as { label: string; url: string }[];
     {nav.footer.map((col) => (
       <nav class="footer__col" aria-label={col.title}>
         <h2>{col.title}</h2>
-        <ul>{col.links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}</ul>
+        <ul>{col.links.map((l) => <li><a href={L(l.href)}>{l.label}</a></li>)}</ul>
       </nav>
     ))}
 
     <div class="footer__col">
-      <h2>Contact</h2>
+      <h2>{t.ui.contactHeading}</h2>
       <ul>
         <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
         {site.phone && <li><a href={`tel:${site.phone.replace(/\s/g, '')}`}>{site.phone}</a></li>}
@@ -32,7 +39,7 @@ const social = (site.social ?? []) as { label: string; url: string }[];
   <div class="footer__bar">
     <div class="container footer__bar-inner">
       <p>&copy; {year} {site.copyrightName}. All rights reserved.</p>
-      <ul>{nav.legal.map((l) => <li><a href={l.href}>{l.label}</a></li>)}</ul>
+      <ul>{nav.legal.map((l) => <li><a href={L(l.href)}>{l.label}</a></li>)}</ul>
     </div>
   </div>
 </footer>

@@ -1,4 +1,10 @@
 ---
+import { getLocale, localizePath } from '../lib/i18n';
+import { T } from '../lib/site';
+const locale = getLocale(Astro.url.pathname);
+const L = (p: string) => localizePath(p, locale);
+const t = T(locale);
+
 interface Props { items: { question: string; answer: string }[] }
 const { items } = Astro.props;
 ---

@@ -1,0 +1,44 @@
+{
+  "main": [
+    { "label": "من نحن", "href": "/about/" },
+    { "label": "خدماتنا", "href": "/services/" },
+    { "label": "القطاعات", "href": "/industries/" },
+    { "label": "آلية العمل", "href": "/process/" },
+    { "label": "مقالات ورؤى", "href": "/insights/" },
+    { "label": "تواصل معنا", "href": "/contact/" }
+  ],
+  "cta": { "label": "كن شريكًا لنا", "href": "/partner-with-us/" },
+  "footer": [
+    {
+      "title": "الشركة",
+      "links": [
+        { "label": "من نحن", "href": "/about/" },
+        { "label": "كن شريكًا لنا", "href": "/partner-with-us/" },
+        { "label": "آلية العمل", "href": "/process/" },
+        { "label": "مقالات ورؤى", "href": "/insights/" },
+        { "label": "تواصل معنا", "href": "/contact/" }
+      ]
+    },
+    {
+      "title": "الخدمات",
+      "links": [
+        { "label": "دعم التوظيف الدولي", "href": "/services/#international-recruitment-support" },
+        { "label": "شراكات التوظيف الدولي", "href": "/services/#international-recruitment-partnerships" },
+        { "label": "استقطاب القوى العاملة", "href": "/services/#workforce-sourcing" },
+        { "label": "تنسيق التوظيف", "href": "/services/#recruitment-coordination" }
+      ]
+    },
+    {
+      "title": "القطاعات",
+      "links": [
+        { "label": "التصنيع والصناعة", "href": "/industries/#manufacturing-and-industrial" },
+        { "label": "تصنيع الأغذية", "href": "/industries/#food-processing" },
+        { "label": "التعبئة والتغليف", "href": "/industries/#packaging" },
+        { "label": "الإنشاءات", "href": "/industries/#construction" },
+        { "label": "الخدمات اللوجستية والتخزين", "href": "/industries/#logistics-and-warehousing" },
+        { "label": "الضيافة", "href": "/industries/#hospitality-and-tourism" }
+      ]
+    }
+  ],
+  "legal": [{ "label": "سياسة الخصوصية", "href": "/privacy-policy/" }]
+}

@@ -1,5 +1,5 @@
 ---
-order: 5
+order: 7
 title: Agriculture
 summary: Workforce support for farming and agricultural operations, including seasonal and peak-period requirements.
 image: /src/assets/uploads/industry-agriculture.svg

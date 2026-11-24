@@ -1,5 +1,5 @@
 ---
-order: 4
+order: 5
 title: Candidate Screening and Evaluation
 summary: Structured assessment of candidates against the criteria you set, so you can focus on those who fit.
 image: /src/assets/uploads/service-screening.svg

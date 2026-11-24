@@ -1,5 +1,5 @@
 ---
-order: 3
+order: 4
 title: Logistics & Warehousing
 summary: Workforce solutions for distribution, storage and transport operations with demanding schedules.
 image: /src/assets/uploads/industry-logistics.svg

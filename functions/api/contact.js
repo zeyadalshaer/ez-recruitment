@@ -11,7 +11,11 @@
 const DEFAULT_TO = 'zeyad@ez-recruitment.com';
 const DEFAULT_FROM = 'EZ Recruitment Website <onboarding@resend.dev>';
 
-const LIMITS = { name: 120, company: 160, email: 160, phone: 40, industry: 80, requirements: 3000, message: 4000 };
+const LIMITS = {
+  name: 120, company: 160, email: 160, phone: 40, country: 80, industry: 80, jobCategories: 200, workersNeeded: 60,
+  timeline: 120, requirements: 3000, position: 120, companyWebsite: 200, services: 200, cooperation: 200, message: 4000,
+};
+const TYPES = { employer: 'Employer', agency: 'Partnership', other: 'General' };
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const clean = (v, max) => String(v ?? '').replace(/\r\n/g, '\n').trim().slice(0, max);
@@ -45,8 +49,11 @@ export async function onRequestPost({ request, env }) {
   if (clean(form.get('website'), 200)) return respond(request, true, 200, {});
 
   const data = Object.fromEntries(Object.entries(LIMITS).map(([k, max]) => [k, clean(form.get(k), max)]));
-  const missing = ['name', 'company', 'email', 'industry', 'requirements'].filter((k) => !data[k]);
-  if (missing.length || !EMAIL_RE.test(data.email)) {
+  const type = TYPES[clean(form.get('inquiryType'), 20)] ? clean(form.get('inquiryType'), 20) : 'employer';
+  const consent = clean(form.get('consent'), 10) === 'yes';
+  const required = { employer: ['name', 'company', 'email', 'industry', 'requirements'], agency: ['name', 'company', 'email', 'message'], other: ['name', 'company', 'email', 'message'] }[type];
+  const missing = required.filter((k) => !data[k]);
+  if (missing.length || !EMAIL_RE.test(data.email) || !consent) {
     return respond(request, false, 422, { error: 'validation', fields: missing });
   }
 
@@ -54,30 +61,34 @@ export async function onRequestPost({ request, env }) {
     return respond(request, false, 503, { error: 'not_configured' });
   }
 
-  const text = [
-    'New enquiry from the EZ Recruitment website',
+  const row = (label, v) => `${label}: ${v || '—'}`;
+  const lines = [
+    `New ${TYPES[type].toUpperCase()} inquiry from the EZ Recruitment website`,
     '',
-    `Name: ${data.name}`,
-    `Company: ${data.company}`,
-    `Business email: ${data.email}`,
-    `Phone: ${data.phone || '—'}`,
-    `Industry: ${data.industry}`,
-    '',
-    'Workforce requirements:',
-    data.requirements,
-    '',
-    'Message:',
-    data.message || '—',
-  ].join('\n');
+    row('Inquiry type', TYPES[type]),
+    row('Name', data.name),
+    row('Company', data.company),
+    row('Business email', data.email),
+    row('Phone / WhatsApp', data.phone),
+    row('Country', data.country),
+  ];
+  if (type === 'employer') {
+    lines.push(row('Industry', data.industry), row('Job categories', data.jobCategories), row('Workers required', data.workersNeeded), row('Timeline', data.timeline), '', 'Workforce requirements:', data.requirements);
+  }
+  if (type === 'agency') {
+    lines.push(row('Position', data.position), row('Website', data.companyWebsite), row('Recruitment services', data.services), row('Areas of cooperation', data.cooperation));
+  }
+  lines.push('', 'Message:', data.message || '—', '', 'Privacy consent: given');
+  const text = lines.join('\n');
 
   const res = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({
       from: env.CONTACT_FROM || DEFAULT_FROM,
-      to: [env.CONTACT_TO || DEFAULT_TO],
+      to: [(type === 'agency' && env.PARTNER_TO) || env.CONTACT_TO || DEFAULT_TO],
       reply_to: data.email,
-      subject: oneLine(`Website enquiry: ${data.company} (${data.industry})`),
+      subject: oneLine(`[${TYPES[type]}] ${data.company}${type === 'employer' ? ` (${data.industry})` : ''}`),
       text,
     }),
   }).catch(() => null);

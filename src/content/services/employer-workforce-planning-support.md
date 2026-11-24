@@ -1,6 +1,6 @@
 ---
-order: 6
-title: Employer Workforce Planning Support
+order: 8
+title: Workforce Planning Support
 summary: Help defining how many people you need, with which skills, and on what timeline, before the search begins.
 image: /src/assets/uploads/service-workforce-planning.svg
 imageAlt: Abstract graphic of ascending bars representing workforce planning

@@ -1,13 +1,15 @@
-// Cloudflare Worker entry. Serves the static website (from /dist) and handles the three
-// small server endpoints: CMS login (/api/auth, /api/callback) and the contact form (/api/contact).
+// Cloudflare Worker entry. Serves the static website (from /dist) and handles the
+// small server endpoints: CMS login (/api/auth, /api/callback) and the forms (/api/contact, /api/partner).
 import * as auth from '../functions/api/auth.js';
 import * as callback from '../functions/api/callback.js';
 import * as contact from '../functions/api/contact.js';
+import * as partner from '../functions/api/partner.js';
 
 const routes = {
   '/api/auth': auth,
   '/api/callback': callback,
   '/api/contact': contact,
+  '/api/partner': partner,
 };
 
 export default {

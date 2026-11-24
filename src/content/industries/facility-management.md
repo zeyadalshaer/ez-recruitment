@@ -1,5 +1,5 @@
 ---
-order: 6
+order: 8
 title: Facility Management
 summary: Recruitment support for organizations that keep buildings, sites and services running day to day.
 image: /src/assets/uploads/industry-facility-management.svg

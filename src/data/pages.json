@@ -2,16 +2,16 @@
   "about": {
     "title": "About Us",
     "eyebrow": "About EZ Recruitment",
-    "intro": "International recruitment and workforce solutions for businesses with staffing requirements.",
-    "description": "Learn about EZ Recruitment, our mission, vision, values and our structured approach to international recruitment for employers.",
+    "intro": "International recruitment and workforce solutions for employers and recruitment partners.",
+    "description": "Learn about EZ Recruitment, our mission, vision, values and our structured approach to international recruitment and professional partnerships.",
     "image": "/src/assets/uploads/about.svg",
     "imageAlt": "Abstract graphic of overlapping panels"
   },
   "services": {
     "title": "Our Services",
     "eyebrow": "Services",
-    "intro": "Six areas of recruitment support, designed to help employers plan, source, assess and coordinate the workforce they need.",
-    "description": "International recruitment support, workforce sourcing, candidate identification, screening and evaluation, recruitment coordination and workforce planning support for employers.",
+    "intro": "Eight areas of support that help employers and recruitment partners plan, source, assess and coordinate the workforce they need.",
+    "description": "International recruitment support, international recruitment partnerships, workforce sourcing, candidate screening, recruitment coordination, cross-border cooperation and workforce planning support.",
     "image": "/src/assets/uploads/service-international-recruitment.svg",
     "imageAlt": "Abstract graphic of a global network"
   },
@@ -19,27 +19,27 @@
     "title": "Industries We Serve",
     "eyebrow": "Industries",
     "intro": "We support employers across sectors where a dependable, well-matched workforce is central to the operation.",
-    "description": "EZ Recruitment supports employers in manufacturing and industrial, construction, logistics and warehousing, hospitality and tourism, agriculture and facility management.",
+    "description": "EZ Recruitment supports employers in manufacturing and industrial, food processing, packaging, construction, logistics and warehousing, hospitality, agriculture and facility management.",
     "image": "/src/assets/uploads/industry-manufacturing.svg",
     "imageAlt": "Abstract graphic of a production line"
   },
   "process": {
     "title": "Our Process",
     "eyebrow": "Process",
-    "intro": "A clear, six-stage workflow that takes you from your first conversation to coordinated next steps.",
-    "description": "The EZ Recruitment process: understanding requirements, workforce planning, candidate sourcing, screening, evaluation and recruitment coordination.",
+    "intro": "A clear, six-stage workflow that takes you from your first conversation to coordinated next steps and continued follow-up.",
+    "description": "The EZ Recruitment process: understanding requirements, workforce planning, candidate sourcing, screening, evaluation and selection, and recruitment coordination, with clear responsibilities and ongoing worker follow-up.",
     "image": "/src/assets/uploads/service-coordination.svg",
     "imageAlt": "Abstract graphic of connected steps"
   },
   "insights": {
     "title": "Insights",
     "eyebrow": "Insights",
-    "intro": "Practical perspectives for employers on international recruitment, workforce planning and hiring.",
+    "intro": "Practical perspectives for employers and recruitment partners on international recruitment, workforce planning and partnerships.",
     "description": "Articles and perspectives on international recruitment, workforce planning and hiring from EZ Recruitment.",
     "emptyText": "No articles match your search. Try a different keyword or browse all categories."
   },
   "contact": {
     "title": "Contact Us",
-    "description": "Contact EZ Recruitment to discuss your workforce needs, international recruitment requirements and hiring plans."
+    "description": "Contact EZ Recruitment to discuss your workforce requirements, international recruitment needs or a recruitment partnership."
   }
 }

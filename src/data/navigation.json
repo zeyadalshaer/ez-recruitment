@@ -34,12 +34,12 @@
       "title": "Company",
       "links": [
         {
-          "label": "Partner With Us",
-          "href": "/partner-with-us/"
-        },
-        {
           "label": "About Us",
           "href": "/about/"
+        },
+        {
+          "label": "Partner With Us",
+          "href": "/partner-with-us/"
         },
         {
           "label": "Our Process",
@@ -63,12 +63,12 @@
           "href": "/services/#international-recruitment-support"
         },
         {
-          "label": "Workforce Sourcing",
-          "href": "/services/#workforce-sourcing"
+          "label": "International Recruitment Partnerships",
+          "href": "/services/#international-recruitment-partnerships"
         },
         {
-          "label": "Candidate Screening",
-          "href": "/services/#candidate-screening-and-evaluation"
+          "label": "Workforce Sourcing",
+          "href": "/services/#workforce-sourcing"
         },
         {
           "label": "Recruitment Coordination",
@@ -84,6 +84,14 @@
           "href": "/industries/#manufacturing-and-industrial"
         },
         {
+          "label": "Food Processing",
+          "href": "/industries/#food-processing"
+        },
+        {
+          "label": "Packaging",
+          "href": "/industries/#packaging"
+        },
+        {
           "label": "Construction",
           "href": "/industries/#construction"
         },
@@ -92,7 +100,7 @@
           "href": "/industries/#logistics-and-warehousing"
         },
         {
-          "label": "Hospitality & Tourism",
+          "label": "Hospitality",
           "href": "/industries/#hospitality-and-tourism"
         }
       ]

@@ -1,0 +1,102 @@
+{
+  "meta": {
+    "title": "Partner With Us",
+    "description": "Partner with EZ Recruitment: structured international recruitment cooperation for recruitment agencies and staffing companies, with clear responsibilities and direct communication."
+  },
+  "hero": {
+    "eyebrow": "Partner With Us",
+    "title": "Build Stronger Recruitment Partnerships",
+    "intro": "EZ Recruitment cooperates with recruitment agencies and staffing companies on international workforce projects, with clear responsibilities, direct communication and a long-term view.",
+    "cta": { "label": "Explore Partnership Opportunities", "href": "#partnership-form" }
+  },
+  "why": {
+    "eyebrow": "Why Partner",
+    "heading": "Why Explore a Partnership with EZ Recruitment?",
+    "intro": "International recruitment works when every party knows its role. This is how we approach cooperation.",
+    "items": [
+      { "title": "Clear roles", "text": "Responsibilities between EZ Recruitment, partners, employers and candidates are agreed before work begins." },
+      { "title": "Direct communication", "text": "You deal with the people managing the cooperation, with no unnecessary layers between you and the work." },
+      { "title": "A structured process", "text": "Defined stages run from the employer's requirement to deployment and follow-up, so every project is easy to track." },
+      { "title": "Commitments employers value", "text": "A two-month replacement guarantee, an English-speaking representative in each worker group and ongoing worker follow-up support trust on the employer side of every project." },
+      { "title": "A long-term outlook", "text": "We prefer lasting working relationships over one-off transactions, and we plan cooperation accordingly." }
+    ]
+  },
+  "who": {
+    "eyebrow": "Who We Work With",
+    "heading": "Who Can Partner With Us?",
+    "items": [
+      "Recruitment agencies",
+      "Temporary staffing and workforce companies",
+      "Labour supply and outsourcing companies",
+      "International recruitment consultants",
+      "Business development and sourcing managers"
+    ],
+    "note": "This page is for recruitment businesses. EZ Recruitment does not provide placement services to individual job seekers."
+  },
+  "areas": {
+    "eyebrow": "Cooperation",
+    "heading": "Potential Areas of Cooperation",
+    "intro": "The scope is agreed case by case. These are the areas we most often discuss.",
+    "items": [
+      { "title": "International recruitment cooperation", "text": "Working together on projects where employer demand and candidate sourcing sit in different countries." },
+      { "title": "Recruitment coordination", "text": "Coordinating the steps between employers, partners and candidates so that nothing is left unclear." },
+      { "title": "Candidate identification and screening", "text": "Agreeing criteria with the employer and assessing candidates against them consistently." },
+      { "title": "Cross-border recruitment cooperation", "text": "Aligning timelines, documents and communication across different markets." },
+      { "title": "Workforce planning support", "text": "Helping define requirements, numbers and timelines before sourcing begins." },
+      { "title": "Long-term partnerships", "text": "Building repeat cooperation for employers with continuing workforce needs." }
+    ]
+  },
+  "how": {
+    "eyebrow": "How It Works",
+    "heading": "How Partnership Cooperation Works",
+    "steps": [
+      { "title": "Inquiry", "text": "You tell us about your business and the cooperation you have in mind." },
+      { "title": "Initial discussion", "text": "We talk through your markets, your strengths and the employer requirements you work with." },
+      { "title": "Scope definition", "text": "We agree what each side will do, in which markets and for which sectors." },
+      { "title": "Written agreement", "text": "Responsibilities, communication and commercial terms are set out in writing." },
+      { "title": "Cooperation and follow-up", "text": "We run projects together and review how the cooperation is working." }
+    ]
+  },
+  "responsibilities": {
+    "eyebrow": "Responsibilities",
+    "heading": "Responsibilities and Communication",
+    "intro": "A typical division of responsibilities. The final split is agreed for each cooperation.",
+    "rows": [
+      { "who": "EZ Recruitment", "does": "Workforce planning and requirement briefs, coordination of the process, communication with employers and workers, and follow-up after deployment." },
+      { "who": "Recruitment partners", "does": "Sourcing and presenting candidates against agreed criteria, keeping candidate information accurate and responding within agreed timelines." },
+      { "who": "Employers", "does": "Defining requirements, making hiring decisions and providing workplace information and instructions." },
+      { "who": "Candidates", "does": "Providing accurate information and taking part in assessment and preparation." },
+      { "who": "Local partners", "does": "Carrying out the local procedures in their country as part of the agreed cooperation structure." }
+    ]
+  },
+  "faq": {
+    "eyebrow": "Questions",
+    "heading": "Partnership FAQ",
+    "items": [
+      { "question": "What happens after I submit the form?", "answer": "We review your inquiry and contact you at your business email to arrange an initial discussion." },
+      { "question": "Who can partner with EZ Recruitment?", "answer": "Recruitment agencies, staffing and labour supply companies, international recruitment consultants and similar businesses. We do not work with individual job seekers." },
+      { "question": "Do you guarantee a number of candidates or a fixed volume?", "answer": "No. Cooperation is agreed case by case, and volumes depend on employer demand and the scope agreed in writing." },
+      { "question": "How are commercial terms agreed?", "answer": "After the initial discussion we set out responsibilities, communication and commercial terms in a written agreement before projects begin." },
+      { "question": "Can we cooperate if our business is outside Europe?", "answer": "Yes. Our work is international. Tell us your country and the markets you work in, and we will discuss how cooperation could work." },
+      { "question": "Is the two-month replacement guarantee part of partnership projects?", "answer": "The guarantee applies in accordance with the agreed guarantee terms for each project. We confirm how it applies during the scope discussion." }
+    ]
+  },
+  "form": {
+    "eyebrow": "Partnership Inquiry",
+    "heading": "Partnership Inquiry Form",
+    "intro": "Tell us about your business and the cooperation you are interested in. Fields marked * are required.",
+    "businessTypes": ["Recruitment agency", "Temporary staffing company", "Labour supply / outsourcing company", "International recruitment consultant", "Other"],
+    "interests": ["International recruitment cooperation", "Recruitment coordination", "Candidate identification and screening", "Cross-border cooperation", "Workforce planning support", "Long-term partnership"],
+    "notice": "This form is for recruitment agencies and businesses. We are unable to assist individual job seekers through this website.",
+    "submit": "Send Partnership Inquiry",
+    "successHeading": "Thank you for your partnership inquiry",
+    "successText": "Your inquiry has been sent. We will review it and contact you at the business email you provided. An inquiry does not by itself create an agreement.",
+    "errorText": "Something went wrong while sending your inquiry. Please try again, or email us directly."
+  },
+  "cta": {
+    "heading": "Let's talk about how we could work together",
+    "text": "If you run a recruitment business and are exploring international cooperation, we would be glad to hear from you.",
+    "label": "Send a Partnership Inquiry",
+    "href": "#partnership-form"
+  }
+}

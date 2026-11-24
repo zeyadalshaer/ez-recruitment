@@ -1,5 +1,5 @@
 ---
-order: 2
+order: 3
 title: Workforce Sourcing
 summary: Structured sourcing of candidates for roles where you need people in numbers, not just one-off hires.
 image: /src/assets/uploads/service-workforce-sourcing.svg
@@ -8,6 +8,7 @@ benefits:
   - Sourcing designed for roles with multiple positions
   - Search criteria based on your actual job requirements
   - A consistent approach across every position in the search
+  - An English-speaking communication representative in each worker group
 ---
 Some businesses need more than a single hire. Seasonal operations, new production lines, project start-ups and expansions all call for candidates in volume. Workforce sourcing is how we approach those searches: clear criteria, consistent assessment and organized candidate information.
 

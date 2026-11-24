@@ -2,27 +2,33 @@
   "hero": {
     "headline": "Build Your Workforce with Confidence",
     "subheadline": "International Recruitment & Workforce Solutions",
-    "description": "EZ Recruitment helps businesses source, screen and coordinate the workers they need. From defining your requirements to coordinating the steps that follow, we provide structured, employer-focused recruitment support.",
-    "primaryCta": { "label": "Discuss Your Hiring Needs", "href": "/contact/" },
-    "secondaryCta": { "label": "Explore Our Services", "href": "/services/" },
+    "description": "EZ Recruitment is an international recruitment and workforce solutions company. We build structured cooperation with recruitment agencies and provide employers with sourcing, screening and coordination for the workers they need, backed by a two-month replacement guarantee and ongoing workforce support.",
+    "primaryCta": {
+      "label": "Discuss Your Workforce Requirements",
+      "href": "/contact/"
+    },
+    "secondaryCta": {
+      "label": "Explore Partnership Opportunities",
+      "href": "/partner-with-us/"
+    },
     "image": "/src/assets/uploads/hero.svg",
     "imageAlt": "Abstract graphic of connected points representing an international workforce network",
     "points": [
-      "Employer-focused",
+      "2-month replacement guarantee",
       "Structured process",
       "Clear communication"
     ]
   },
   "intro": {
     "eyebrow": "Who We Are",
-    "heading": "Recruitment support built around the employer",
+    "heading": "International recruitment and workforce solutions, built around clear commitments",
     "paragraphs": [
-      "EZ Recruitment is an international recruitment and workforce solutions company working with businesses that need to build or expand their workforce. We take on the practical work of recruitment: understanding the role, identifying suitable candidates, assessing them against your requirements and coordinating the steps that follow.",
-      "Our approach is deliberately straightforward. We listen carefully, plan the search properly and keep you informed at each stage, so that hiring decisions always remain in your hands."
+      "EZ Recruitment is an international recruitment and workforce solutions company. We take on the practical work of recruitment: understanding the requirement, sourcing and screening candidates, coordinating the steps that follow and supporting the workforce after deployment.",
+      "We work with employers who need dependable, well-matched people, and with recruitment agencies that want a professional partner for international cooperation. Our approach is straightforward: plan properly, communicate directly and stand behind our commitments."
     ],
     "highlights": [
-      "Employer-focused recruitment support",
-      "International sourcing",
+      "Recruitment agency partnerships",
+      "Employer workforce solutions",
       "A structured, transparent process"
     ],
     "image": "/src/assets/uploads/about.svg",
@@ -50,8 +56,8 @@
     "intro": "Hiring internationally involves many moving parts. These are the principles we apply to keep it clear and manageable for the employers we work with.",
     "points": [
       {
-        "title": "Built for employers",
-        "text": "Everything we do is organized around the hiring needs of businesses, not individual job seekers."
+        "title": "Built for employers and partners",
+        "text": "Everything we do is organized around the needs of businesses and recruitment agencies, not individual job seekers."
       },
       {
         "title": "A clear, structured process",
@@ -63,49 +69,68 @@
       },
       {
         "title": "Direct communication",
-        "text": "You work directly with the person managing your search, with no layers of hand-offs between you and the work."
+        "text": "You work directly with the person managing your search, with an English-speaking representative in each worker group."
+      },
+      {
+        "title": "Support after deployment",
+        "text": "A two-month replacement guarantee and ongoing contact with workers continue our commitment beyond the recruitment stage."
       },
       {
         "title": "Flexible scope",
         "text": "Use the full process or individual stages of it, depending on what your business needs and what you already handle in-house."
-      },
-      {
-        "title": "Realistic expectations",
-        "text": "We are open about timelines, requirements and what is feasible, and we do not promise outcomes that depend on factors we cannot control."
       }
     ]
   },
   "process": {
     "eyebrow": "How We Work",
     "heading": "Our recruitment process",
-    "intro": "A defined workflow from the first conversation to coordinated next steps.",
+    "intro": "A defined workflow from the first conversation to coordinated next steps and continued follow-up.",
     "linkLabel": "See the full process",
     "linkHref": "/process/"
   },
   "cta": {
-    "heading": "Ready to discuss your hiring needs?",
-    "text": "Tell us about the roles you need to fill. We will review your requirements and come back to you with suggested next steps.",
-    "button": { "label": "Discuss Your Workforce Needs", "href": "/contact/" }
+    "heading": "Ready to work together?",
+    "text": "Whether you are an employer with roles to fill or a recruitment agency exploring cooperation, tell us about your requirements and we will come back to you with suggested next steps.",
+    "button": {
+      "label": "Discuss Your Workforce Requirements",
+      "href": "/contact/"
+    },
+    "secondary": {
+      "label": "Explore Partnership Opportunities",
+      "href": "/partner-with-us/"
+    }
   },
   "faq": {
     "eyebrow": "Questions",
     "heading": "Frequently asked questions",
-    "intro": "Straightforward answers to the questions employers ask most often.",
+    "intro": "Straightforward answers to the questions employers and recruitment agencies ask most often.",
     "items": [
       {
         "question": "What does EZ Recruitment do?",
-        "answer": "We provide international recruitment and workforce solutions for businesses. Our support covers workforce planning, candidate sourcing, screening and evaluation, and the coordination of recruitment steps between you and shortlisted candidates."
+        "answer": "We provide international recruitment and workforce solutions. Our support covers workforce planning, candidate sourcing, screening and evaluation, recruitment coordination and ongoing follow-up with recruited workers, for employers and in cooperation with recruitment agencies."
       },
       {
         "question": "Who do you work with?",
-        "answer": "We work with employers and businesses, including business owners, HR directors and managers, and recruitment managers. We do not provide services to individual job seekers."
+        "answer": "We work with employers and businesses, and with recruitment agencies and staffing companies interested in international cooperation. Our services are for businesses and partners, not individual job seekers."
+      },
+      {
+        "question": "What is the two-month replacement guarantee?",
+        "answer": "Every recruited worker comes with a two-month replacement guarantee in the event of absconding, giving employers additional confidence and peace of mind. The guarantee applies in accordance with the agreed guarantee terms."
+      },
+      {
+        "question": "How do we communicate with the workers we employ?",
+        "answer": "Each workforce group includes an English-speaking communication representative who helps facilitate clear communication between workers and the employer. Our own communication with workers also continues beyond deployment, so they stay informed about instructions and workplace updates."
       },
       {
         "question": "Which industries do you support?",
-        "answer": "Our focus is on manufacturing and industrial, construction, logistics and warehousing, hospitality and tourism, agriculture, and facility management. If your sector is not listed, you are welcome to get in touch to discuss your requirements."
+        "answer": "Our focus is on manufacturing and industrial, food processing, packaging, construction, logistics and warehousing, hospitality, agriculture and facility management. If your sector is not listed, get in touch to discuss your requirements."
       },
       {
-        "question": "How do we get started?",
+        "question": "How can a recruitment agency work with EZ Recruitment?",
+        "answer": "Agencies can submit a partnership inquiry through the Partner With Us page. We review it, arrange an initial discussion and, where there is a good fit, agree the scope and responsibilities of the cooperation in writing."
+      },
+      {
+        "question": "How do we get started as an employer?",
         "answer": "Send us an enquiry through the contact page with a short description of your business and the roles you need to fill. We will review it and contact you at your business email to discuss your requirements in more detail."
       },
       {
@@ -113,13 +138,71 @@
         "answer": "It helps to have the job titles, the approximate number of positions, the skills and experience required, the work location and your preferred timeline. If some of this is still undecided, we can help you work through it during the planning stage."
       },
       {
-        "question": "Can you guarantee that positions will be filled?",
-        "answer": "No recruitment partner can honestly guarantee a specific outcome. Results depend on the roles, the requirements, market conditions and the legal and administrative steps involved. What we commit to is a structured, transparent process and clear communication throughout."
-      },
-      {
-        "question": "Do you advise on visas, work permits or employment law?",
-        "answer": "Immigration, work authorization and employment rules vary by location and by role. We coordinate the recruitment side of the process with you, and we recommend that employers confirm legal and regulatory requirements with qualified advisers in the relevant jurisdictions."
+        "question": "Do you handle visas, work permits and employment procedures?",
+        "answer": "Immigration, work authorization and employment procedures differ by country and role. We coordinate these steps with you and, where a country requires a local authorized provider, together with the appropriate partners within our cooperation structure."
       }
     ]
+  },
+  "paths": {
+    "eyebrow": "Two Ways to Work With Us",
+    "heading": "Choose the path that fits your business",
+    "agencies": {
+      "title": "For Recruitment Agencies",
+      "text": "Build a structured international recruitment partnership. Bring your sourcing strengths and your employer relationships, and discuss how we can cooperate across borders with clear roles and direct communication.",
+      "cta": {
+        "label": "Explore Partnership Opportunities",
+        "href": "/partner-with-us/"
+      }
+    },
+    "employers": {
+      "title": "For Employers",
+      "text": "Tell us about the roles you need to fill. We plan the search, source and screen candidates and coordinate the steps that follow, with a two-month replacement guarantee on every recruited worker.",
+      "cta": {
+        "label": "Discuss Your Workforce Requirements",
+        "href": "/contact/"
+      }
+    }
+  },
+  "partnership": {
+    "eyebrow": "Partnerships",
+    "heading": "Build Stronger Recruitment Partnerships",
+    "text": "International recruitment works best when everyone involved knows their role. We cooperate with recruitment agencies and staffing companies on sourcing, coordination and long-term workforce projects, with clear communication at every stage.",
+    "points": [
+      "International recruitment cooperation",
+      "Clear division of responsibilities",
+      "Direct, professional communication",
+      "Long-term working relationships"
+    ],
+    "cta": {
+      "label": "Explore Partnership Opportunities",
+      "href": "/partner-with-us/"
+    }
+  },
+  "support": {
+    "eyebrow": "Employer Commitments",
+    "heading": "More Than Recruitment. A Commitment to Workforce Support.",
+    "intro": "Recruitment does not end when workers arrive. These are the commitments employers can rely on when they work with EZ Recruitment.",
+    "items": [
+      {
+        "title": "2-Month Replacement Guarantee",
+        "text": "Every recruited worker comes with a two-month replacement guarantee in the event of absconding, giving employers additional confidence and peace of mind.",
+        "tag": "Added reassurance"
+      },
+      {
+        "title": "English-Speaking Group Representative",
+        "text": "Each workforce group includes an English-speaking communication representative to help facilitate clear communication between workers and the employer.",
+        "tag": "Clear communication"
+      },
+      {
+        "title": "Ongoing Workforce Follow-Up",
+        "text": "Our communication with workers continues beyond recruitment and deployment. We maintain ongoing contact to help them understand workplace developments, important instructions and relevant updates, supporting smoother communication and more stable workforce relationships.",
+        "tag": "Continuous contact"
+      }
+    ],
+    "note": "The replacement guarantee applies in accordance with the agreed guarantee terms.",
+    "cta": {
+      "label": "Discuss Your Workforce Requirements",
+      "href": "/contact/"
+    }
   }
 }

@@ -1,5 +1,5 @@
 ---
-order: 2
+order: 5
 title: Construction
 summary: Recruitment support for projects where the right trades and site roles are needed at the right time.
 image: /src/assets/uploads/industry-construction.svg

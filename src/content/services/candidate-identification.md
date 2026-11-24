@@ -1,5 +1,5 @@
 ---
-order: 3
+order: 4
 title: Candidate Identification
 summary: Finding candidates whose skills, experience and circumstances fit the role you are trying to fill.
 image: /src/assets/uploads/service-candidate-identification.svg

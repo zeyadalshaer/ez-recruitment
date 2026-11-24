@@ -1,11 +1,13 @@
 ---
 import home from '../data/home.json';
-interface Props { heading?: string; text?: string; label?: string; href?: string }
+interface Props { heading?: string; text?: string; label?: string; href?: string; secondaryLabel?: string; secondaryHref?: string }
 const {
   heading = home.cta.heading,
   text = home.cta.text,
   label = home.cta.button.label,
   href = home.cta.button.href,
+  secondaryLabel = home.cta.secondary?.label,
+  secondaryHref = home.cta.secondary?.href,
 } = Astro.props;
 ---
 <section class="cta-band">
@@ -14,6 +16,9 @@ const {
       <h2>{heading}</h2>
       <p>{text}</p>
     </div>
-    <a class="btn btn--primary btn--lg" href={href}>{label}<span class="btn__arrow" aria-hidden="true">→</span></a>
+    <div class="cta-band__actions">
+      <a class="btn btn--primary btn--lg" href={href}>{label}<span class="btn__arrow" aria-hidden="true">→</span></a>
+      {secondaryLabel && <a class="btn btn--ghost btn--lg" href={secondaryHref}>{secondaryLabel}</a>}
+    </div>
   </div>
 </section>

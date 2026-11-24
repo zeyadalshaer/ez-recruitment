@@ -1,7 +1,7 @@
 ---
-order: 4
-title: Hospitality & Tourism
-summary: Recruitment support for hotels, restaurants and tourism businesses where service quality depends on people.
+order: 6
+title: Hospitality
+summary: Recruitment support for hotels, restaurants and catering operations where service quality depends on people.
 image: /src/assets/uploads/industry-hospitality.svg
 imageAlt: Abstract graphic of arches and open doorways
 roles:

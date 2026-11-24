@@ -3,7 +3,10 @@ import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 import ProcessTimeline from '../components/ProcessTimeline.astro';
 import CtaBand from '../components/CtaBand.astro';
+import SectionHead from '../components/SectionHead.astro';
 import { pages } from '../lib/site';
+import partner from '../data/partner.json';
+import home from '../data/home.json';
 
 const p = pages.process;
 ---
@@ -16,6 +19,29 @@ const p = pages.process;
       <p class="timeline-note" data-reveal>
         Every search is different. Timelines depend on the roles, the requirements and the administrative steps involved, and we will discuss realistic expectations with you at the planning stage.
       </p>
+    </div>
+  </section>
+
+  <section class="section section--mist">
+    <div class="container container--narrow">
+      <SectionHead eyebrow="Roles" heading="Who does what" intro="A typical division of responsibilities across a recruitment project. The final split is confirmed for each project." />
+      <dl class="resp" data-reveal>
+        {partner.responsibilities.rows.map((r) => (<div class="resp__row"><dt>{r.who}</dt><dd>{r.does}</dd></div>))}
+      </dl>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHead eyebrow={home.support.eyebrow} heading="Support that continues after deployment" intro="Recruitment is only part of the picture. These commitments stay with the project after workers begin." />
+      <div class="support__grid">
+        {home.support.items.map((it, i) => (
+          <article class:list={['support-card', { 'support-card--lead': i === 0 }]} data-reveal style={`--i:${i}`}>
+            <span class="support-card__tag">{it.tag}</span><h3>{it.title}</h3><p>{it.text}</p>
+          </article>
+        ))}
+      </div>
+      <p class="support__note">{home.support.note}</p>
     </div>
   </section>
 

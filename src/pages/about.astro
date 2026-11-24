@@ -67,5 +67,12 @@ const p = pages.about;
     </div>
   </section>
 
+  <section class="section">
+    <div class="container container--narrow" data-reveal>
+      <SectionHead eyebrow={about.partnerships.eyebrow} heading={about.partnerships.heading} intro={about.partnerships.text} />
+      <p><a class="btn btn--primary btn--lg" href={about.partnerships.cta.href}>{about.partnerships.cta.label}<span class="btn__arrow" aria-hidden="true">→</span></a></p>
+    </div>
+  </section>
+
   <CtaBand />
 </Layout>

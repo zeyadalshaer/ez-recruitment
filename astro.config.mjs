@@ -5,5 +5,15 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://ez-recruitment.com',
   trailingSlash: 'always',
-  integrations: [sitemap({ filter: (page) => !page.includes('/admin') && !page.includes('/thank-you') })],
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'ar', 'pl', 'ro'],
+    routing: { prefixDefaultLocale: false },
+  },
+  integrations: [
+    sitemap({
+      filter: (page) => !page.includes('/admin') && !page.includes('/thank-you'),
+      i18n: { defaultLocale: 'en', locales: { en: 'en', ar: 'ar', pl: 'pl', ro: 'ro' } },
+    }),
+  ],
 });

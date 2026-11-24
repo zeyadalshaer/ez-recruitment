@@ -1,24 +1,39 @@
 ---
 import Logo from './Logo.astro';
 import { nav } from '../lib/site';
+import { getLocale, stripLocale, localizePath, localeMeta, publishedLocales } from '../lib/i18n';
 
-const path = Astro.url.pathname;
-const isActive = (href: string) => href !== '/' && path.startsWith(href.split('#')[0]);
+const locale = getLocale(Astro.url.pathname);
+const base = stripLocale(Astro.url.pathname);
+const L = (href: string) => localizePath(href, locale);
+const isActive = (href: string) => href !== '/' && base.startsWith(href.split('#')[0]);
+const showLang = publishedLocales.length > 1;
 ---
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header" data-header>
   <div class="container header__inner">
-    <a class="brand" href="/" aria-label="EZ Recruitment, home"><Logo /></a>
+    <a class="brand" href={L('/')} aria-label="EZ Recruitment, home"><Logo /></a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu" data-nav-toggle>
       <span></span><span></span><span></span>
     </button>
     <nav class="nav" id="site-nav" aria-label="Main" data-nav>
       <ul class="nav__list">
+        <li class="nav__home"><a href={L('/')} aria-current={base === '/' ? 'page' : undefined}>Home</a></li>
         {nav.main.map((l) => (
-          <li><a href={l.href} aria-current={isActive(l.href) ? 'page' : undefined}>{l.label}</a></li>
+          <li><a href={L(l.href)} aria-current={isActive(l.href) ? 'page' : undefined}>{l.label}</a></li>
         ))}
       </ul>
-      <a class="btn btn--primary btn--sm nav__cta" href={nav.cta.href}>{nav.cta.label}</a>
+      <a class="btn btn--primary btn--sm nav__cta" href={L(nav.cta.href)}>{nav.cta.label}</a>
+      {showLang && (
+        <details class="lang">
+          <summary aria-label="Language">{localeMeta[locale].native}</summary>
+          <ul>
+            {publishedLocales.map((l) => (
+              <li><a href={localizePath(base, l)} hreflang={localeMeta[l].htmlLang} lang={localeMeta[l].htmlLang} aria-current={l === locale ? 'true' : undefined}>{localeMeta[l].native}</a></li>
+            ))}
+          </ul>
+        </details>
+      )}
     </nav>
   </div>
 </header>

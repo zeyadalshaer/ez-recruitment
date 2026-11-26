@@ -7,5 +7,10 @@
     "binding": "ASSETS",
     "run_worker_first": ["/api/*"],
     "not_found_handling": "404-page"
-  }
+  },
+  // Worker Previews (non-production branches). Empty on purpose: this site has no vars, KV, D1, R2
+  // or other storage bindings, so there is nothing production-owned a Preview could touch.
+  // Secrets (Resend, GitHub OAuth) are NOT inherited by Previews, so form emails and /admin login
+  // stay off in Previews until Preview-only secrets are set deliberately.
+  "previews": {}
 }
